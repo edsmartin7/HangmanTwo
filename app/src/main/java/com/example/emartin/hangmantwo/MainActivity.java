@@ -7,7 +7,6 @@ import android.view.View;
 
 //https://developer.android.com/guide/topics/resources/drawable-resource.html
 //https://developer.android.com/reference/android/graphics/drawable/ShapeDrawable.html
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
