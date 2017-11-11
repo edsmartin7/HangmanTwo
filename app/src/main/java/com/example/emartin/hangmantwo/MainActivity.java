@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 //https://developer.android.com/guide/topics/resources/drawable-resource.html
 //https://developer.android.com/reference/android/graphics/drawable/ShapeDrawable.html
@@ -13,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_screen_layout);
+        TextView customTextview = (TextView) findViewById(R.id.custom_text_view);
 
     }
 
@@ -23,6 +25,5 @@ public class MainActivity extends AppCompatActivity {
         startActivity(myIntent);
 
     }
-
 
 }

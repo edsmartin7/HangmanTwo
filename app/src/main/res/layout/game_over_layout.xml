@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.emartin.hangmantwo.GameActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <ImageView
@@ -14,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/hangdroid_0"
+        app:srcCompat="@drawable/hangdroid_5"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginBottom="100dp"
@@ -50,25 +47,6 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:text="-"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:text="-"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            />
 
     </LinearLayout>
 
@@ -106,9 +84,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Check Letter"
-            android:onClick="checkLetter"
+            android:onClick="introduceLetter"
             />
 
     </LinearLayout>
+
+
 
 </RelativeLayout>

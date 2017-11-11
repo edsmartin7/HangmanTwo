@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--
     <style name="tiedie"
         android:shape="rectangle">
         <gradient
@@ -16,6 +17,7 @@
             android:angle="90"
             />
     </style>
+    -->
 
 
 </resources>

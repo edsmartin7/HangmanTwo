@@ -3,22 +3,24 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/tiedie"
     android:background="@android:color/holo_red_light"
     >
 
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
+        android:id="@+id/custom_text_view"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/linearLayout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="22dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:text="HANGMAN VERSION 2"
         android:textColor="@android:color/holo_red_dark"
-        android:textSize="40dp" />
+        android:textSize="40dp"
+        />
 
 
     <LinearLayout
@@ -36,6 +38,7 @@
             android:layout_height="wrap_content"
             android:text="Single Player"
             android:layout_marginBottom="10dp"
+            android:onClick="startSinglePlayerGame"
             />
 
         <Button
