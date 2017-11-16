@@ -18,6 +18,7 @@ public class GameActivity extends AppCompatActivity {
     String word = "WORD";
     int failCounter = 0;
     int guessedLetters = 0;
+    private static int points = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -105,9 +106,20 @@ public class GameActivity extends AppCompatActivity {
         } else if (failCounter == 6) {
             //game over
             Intent gameOverIntent = new Intent(this, GameOverActivity.class);
+            gameOverIntent.putExtra("Points_Sent", points);
             startActivity(gameOverIntent);
         }
 
+
+    }
+
+    public void setRandomWord() {
+
+        String[] words = {"hello", "word", "funk", "help",  "this", "that"};
+
+        int randomNumber = (int)Math.random() * words.length;
+        String randomWord = words[randomNumber];
+        word = randomWord;
 
     }
 
