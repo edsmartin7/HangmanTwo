@@ -14,8 +14,8 @@ public class GameOverActivity extends AppCompatActivity {
         setContentView(R.layout.game_over_layout);
 
         int points = getIntent().getIntExtra("Points_Sent", 0);
-        TextView textViewPoints = (TextView) findViewById(R.id.textViewPoints);
-        textViewPoints.setText(String.valueOf(points));
+        //TextView textViewPoints = (TextView) findViewById(R.id.textViewPoints);
+        //textViewPoints.setText(String.valueOf(points));
 
     }
 }

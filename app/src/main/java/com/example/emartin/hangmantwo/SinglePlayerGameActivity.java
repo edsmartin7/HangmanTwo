@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,10 +13,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Random;
 
-public class GameActivity extends AppCompatActivity {
 
-    String word = "WORD";
+public class SinglePlayerGameActivity extends AppCompatActivity {
+
+    //String word = "WORD";
+    private String word;
     int failCounter = 0;
     int guessedLetters = 0;
     private static int points = 0;
@@ -23,13 +27,59 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_screen_layout);
+        setContentView(R.layout.singleplayer_game_layout);
+
+        word = setRandomWord();
+
     }
 
+    public void introduceLetter(View v) {
+
+        EditText myEditText = (EditText) findViewById(R.id.guessed_letter);
+        String guessedLetter = myEditText.getText().toString();
+
+        //if user does not enter anything
+        if(guessedLetter.length() != 1) {
+            Toast.makeText(this, "Please introduce a letter", Toast.LENGTH_SHORT).show();
+        } else {
+            checkLetter(guessedLetter);
+        }
+
+    }
+
+    public void checkLetter(String givenLetter) {
+
+        boolean found = false;
+        char charIntroduced = givenLetter.charAt(0);
+
+        for (int letter = 0; letter < word.length(); letter++) {
+            char charFromTheWord = word.charAt(letter);
+            if (charFromTheWord  == charIntroduced) {
+                //String send = "" + guessedLetter.charAt(letter);
+                correctGuessDisplay(letter, charIntroduced);
+                found = true;
+                guessedLetters++;
+            }
+        }
+
+        if (found == false) {
+            incorrectGuess(charIntroduced);
+        }
+
+        //game won, score one point, change screen
+        if (guessedLetters == word.length()) {
+            Toast.makeText(this, "YOU WIN!!!", Toast.LENGTH_LONG).show();
+            finish();
+        }
+
+
+    }
+
+    /*
     //check if letter is in word or not
     public void checkLetter(View v) {
 
-        EditText myEditText = (EditText) findViewById(R.id.editTextLetter);
+        EditText myEditText = (EditText) findViewById(R.id.guessed_letter);
         String guessedLetter = myEditText.getText().toString();
 
         //if user does not enter anything
@@ -37,20 +87,19 @@ public class GameActivity extends AppCompatActivity {
             Toast.makeText(this, "Please introduce a letter", Toast.LENGTH_SHORT).show();
         } else {
 
-            //char charIntroduced = introduceLetter.charAt(0);
             boolean found = false;
             for (int letter = 0; letter < word.length(); letter++) {
                 char charFromTheWord = word.charAt(letter);
-
                 if (charFromTheWord  == guessedLetter.charAt(0)) {
-                    showLettersAtIndex(letter, guessedLetter.charAt(letter));
+                    //String send = "" + guessedLetter.charAt(letter);
+                    correctGuessDisplay(letter, ""+guessedLetter.charAt(letter));
                     found = true;
                     guessedLetters++;
                 }
             }
 
             if (found == false) {
-                letterFailed(guessedLetter);
+                incorrectGuess(guessedLetter);
             }
 
             //game won, score one point, change screen
@@ -60,6 +109,7 @@ public class GameActivity extends AppCompatActivity {
 
         }
     }
+    */
 
     /*
     public void clearScreen() {
@@ -85,10 +135,10 @@ public class GameActivity extends AppCompatActivity {
     }
     */
 
-    public void letterFailed(String letterFailed) {
+    public void incorrectGuess(char letterFailed) {
 
         //TextView textViewFailed = (TextView) findViewById(R.id.textView6);
-        //textViewFailed.setText(letterFailed);
+        //textViewFailed.setText(""+letterFailed);
 
         failCounter++;
         ImageView imageView = (ImageView) findViewById(R.id.hangman);
@@ -105,29 +155,49 @@ public class GameActivity extends AppCompatActivity {
             imageView.setImageResource(R.drawable.hangdroid_5);
         } else if (failCounter == 6) {
             //game over
-            Intent gameOverIntent = new Intent(this, GameOverActivity.class);
-            gameOverIntent.putExtra("Points_Sent", points);
-            startActivity(gameOverIntent);
+            //Intent gameOverIntent = new Intent(this, GameOverActivity.class);
+            //gameOverIntent.putExtra("Points_Sent", points);
+            //startActivity(gameOverIntent);
+            Toast.makeText(this, "YOU LOSE!!!", Toast.LENGTH_LONG).show();
+            finish();
         }
-
 
     }
 
-    public void setRandomWord() {
+    public String setRandomWord() {
 
         String[] words = {"hello", "word", "funk", "help",  "this", "that"};
 
-        int randomNumber = (int)Math.random() * words.length;
+        //int randomNumber = (int)Math.random() * words.length;
+        Random rand = new Random();
+        int randomNumber = rand.nextInt(words.length)+1;
+
         String randomWord = words[randomNumber];
-        word = randomWord;
+        Log.d("Correct word", randomWord);
+
+        return randomWord;
 
     }
 
+    /*
     //displaying a letter guessed correctly by the user
-    public void showLettersAtIndex(int position, char letterGuessed) {
-        LinearLayout layoutLetter = (LinearLayout) findViewById(R.id.word_view);
-        TextView textView = (TextView) layoutLetter.getChildAt(position);
+    public void correctGuessDisplay(int position, String letterGuessed) {
+
+        LinearLayout wordAnswer = (LinearLayout) findViewById(R.id.word_view);
+        TextView textView = (TextView) wordAnswer.getChildAt(position);
         textView.setText(letterGuessed);
+        ((EditText) findViewById(R.id.guessed_letter)).setText("");
+
+    }
+    */
+
+    public void correctGuessDisplay(int position, char letterGuessed) {
+
+        LinearLayout wordAnswer = (LinearLayout) findViewById(R.id.word_view);
+        TextView textView = (TextView) wordAnswer.getChildAt(position);
+        textView.setText(""+letterGuessed);
+        ((EditText) findViewById(R.id.guessed_letter)).setText("");
+
     }
 
 }

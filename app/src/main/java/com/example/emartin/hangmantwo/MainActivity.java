@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     public void startSinglePlayerGame(View view) {
 
         //create an intent, to start a new activity
-        Intent myIntent = new Intent(this, GameActivity.class);
+        Intent myIntent = new Intent(this, SinglePlayerGameActivity.class);
         startActivity(myIntent);
 
     }
