@@ -9,37 +9,23 @@ import android.widget.EditText;
 
 public class MultiPlayerActivity extends AppCompatActivity {
 
-    private String word;
+    private String wordToGuess;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.multiplayer_game_screen);
-
+        setContentView(R.layout.multiplayer_layout);
     }
 
     public void startMultiGame(View view) {
 
         EditText editText = (EditText) findViewById(R.id.editTextWord);
-        String wordToGuess = editText.getText().toString();
-        editText.setText("");
+        wordToGuess = editText.getText().toString();
 
-        Intent myIntent = new Intent(this, SinglePlayerGameActivity.class);
+        Intent myIntent = new Intent(this, MultiPlayerGameActivity.class);
         myIntent.putExtra("WORD_SENT", wordToGuess);
         startActivity(myIntent);
 
     }
-
-    public void someMethod() {
-
-        int guessedLetters = 0; //?
-        //to deal with stack of activities
-        if(guessedLetters == word.length()) {
-            finish();
-        }
-
-    }
-
-
 
 }
