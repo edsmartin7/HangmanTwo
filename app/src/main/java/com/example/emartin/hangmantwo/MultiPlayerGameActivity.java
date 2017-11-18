@@ -23,14 +23,14 @@ public class MultiPlayerGameActivity extends AppCompatActivity {
     int guessedLetters = 0;
     private static int points = 0;
 
+    //initialize the activity/screen
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.multiplayer_game_screen);
 
         Intent intent = getIntent();
-        word = intent.getStringExtra("WORD_SENT");
-        Log.d("NEW GAMES WORD IS ", word);
+        word = intent.getStringExtra("WORD_SENT").toLowerCase();
         //word = setRandomWord();
         createTextViews(word);
 
@@ -39,14 +39,13 @@ public class MultiPlayerGameActivity extends AppCompatActivity {
     //create textviews dynamically (for a word)
     public void createTextViews(String word) {
 
-        LinearLayout layoutletters = (LinearLayout) findViewById(R.id.word_view);
+        LinearLayout letterGroup = (LinearLayout) findViewById(R.id.word_view);
 
         //for each letter in the word, create a text view
         for(int x=0; x<word.length(); x++) {
             //create new xml textview file
             TextView newTextView = (TextView) getLayoutInflater().inflate(R.layout.single_text_view, null);
-            //TextView newTextView = (TextView) findViewById(R.id.blank_text_view);
-            layoutletters.addView(newTextView);
+            letterGroup.addView(newTextView);
         }
 
     }
@@ -54,7 +53,7 @@ public class MultiPlayerGameActivity extends AppCompatActivity {
     public void introduceLetter(View v) {
 
         EditText myEditText = (EditText) findViewById(R.id.guessed_letter);
-        String guessedLetter = myEditText.getText().toString();
+        String guessedLetter = myEditText.getText().toString().toLowerCase();
 
         //if user does not enter anything
         if(guessedLetter.length() != 1) {
@@ -73,7 +72,6 @@ public class MultiPlayerGameActivity extends AppCompatActivity {
         for (int letter = 0; letter < word.length(); letter++) {
             char charFromTheWord = word.charAt(letter);
             if (charFromTheWord  == charIntroduced) {
-                //String send = "" + guessedLetter.charAt(letter);
                 correctGuessDisplay(letter, charIntroduced);
                 found = true;
                 guessedLetters++;
@@ -81,7 +79,7 @@ public class MultiPlayerGameActivity extends AppCompatActivity {
         }
 
         if (found == false) {
-            incorrectGuess(charIntroduced);
+            incorrectGuess();
         }
 
         //game won, score one point, change screen
@@ -89,7 +87,6 @@ public class MultiPlayerGameActivity extends AppCompatActivity {
             Toast.makeText(this, "YOU WIN!!!", Toast.LENGTH_LONG).show();
             finish();
         }
-
 
     }
 
@@ -102,10 +99,7 @@ public class MultiPlayerGameActivity extends AppCompatActivity {
 
     }
 
-    public void incorrectGuess(char letterFailed) {
-
-        //TextView textViewFailed = (TextView) findViewById(R.id.textView6);
-        //textViewFailed.setText(""+letterFailed);
+    public void incorrectGuess() {
 
         failCounter++;
         ImageView imageView = (ImageView) findViewById(R.id.hangman);
@@ -128,6 +122,8 @@ public class MultiPlayerGameActivity extends AppCompatActivity {
             Toast.makeText(this, "YOU LOSE!!!", Toast.LENGTH_LONG).show();
             finish();
         }
+
+        Toast.makeText(this, "WRONG LETTER!", Toast.LENGTH_SHORT).show();
 
     }
 
