@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -13,15 +12,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Random;
-
 
 public class MultiPlayerGameActivity extends AppCompatActivity {
 
     private String word;
     int failCounter = 0;
     int guessedLetters = 0;
-    private static int points = 0;
 
     //initialize the activity/screen
     @Override
@@ -31,7 +27,6 @@ public class MultiPlayerGameActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         word = intent.getStringExtra("WORD_SENT").toLowerCase();
-        //word = setRandomWord();
         createTextViews(word);
 
     }
@@ -116,9 +111,6 @@ public class MultiPlayerGameActivity extends AppCompatActivity {
             imageView.setImageResource(R.drawable.hangdroid_5);
         } else if (failCounter == 6) {
             //game over
-            //Intent gameOverIntent = new Intent(this, GameOverActivity.class);
-            //gameOverIntent.putExtra("Points_Sent", points);
-            //startActivity(gameOverIntent);
             Toast.makeText(this, "YOU LOSE!!!", Toast.LENGTH_LONG).show();
             finish();
         }
@@ -126,7 +118,5 @@ public class MultiPlayerGameActivity extends AppCompatActivity {
         Toast.makeText(this, "WRONG LETTER!", Toast.LENGTH_SHORT).show();
 
     }
-
-    //add a game over intent
 
 }

@@ -21,7 +21,7 @@ public class MultiPlayerActivity extends AppCompatActivity {
 
         EditText editText = (EditText) findViewById(R.id.editTextWord);
         wordToGuess = editText.getText().toString();
-        editText.setText("");//
+        editText.setText("");
 
         Intent myIntent = new Intent(this, MultiPlayerGameActivity.class);
         myIntent.putExtra("WORD_SENT", wordToGuess);

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="word_bank">
+        <item>album</item>
+        <item>artist</item>
+        <item>superstitious</item>
+        <item>fiction</item>
+        <item>alone</item>
+        <item>fahrenheit</item>
+        <item>achilles</item>
+        <item>summer</item>
+        <item>whilst</item>
+        <item>kidney</item>
+        <item>rendezvous</item>
+        <item>indict</item>
+        <item>playwright</item>
+        <item>weird</item>
+        <item>cemetery</item>
+        <item>pharoah</item>
+        <item>arctic</item>
+        <item>aberration</item>
+        <item>advocate</item>
+        <item>ambivalent</item>
+        <item>contentious</item>
+        <item>demagogue</item>
+        <item>philanthropic</item>
+    </array>
+
+</resources>

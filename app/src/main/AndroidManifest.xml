@@ -18,10 +18,6 @@
         </activity>
         <activity android:name=".SinglePlayerGameActivity">
         </activity>
-
-        <activity android:name=".GameOverActivity">
-        </activity>
-
         <activity android:name=".MultiPlayerActivity">
         </activity>
         <activity android:name=".MultiPlayerGameActivity">
