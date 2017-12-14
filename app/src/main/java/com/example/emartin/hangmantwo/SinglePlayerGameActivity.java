@@ -5,7 +5,6 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -94,7 +93,6 @@ public class SinglePlayerGameActivity extends AppCompatActivity {
         ((EditText) findViewById(R.id.guessed_letter)).setText("");
 
     }
-
 
     public void incorrectGuess() {
 
